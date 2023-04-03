@@ -7,6 +7,7 @@
         public string EmailAddress { get; set; }
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
+        public IList<RoleDto> Roles { get; set; } = new List<RoleDto>();
     }
     public class CreateUserRequestModel
     {
@@ -19,6 +20,7 @@
     {
         public string EmailAddress { get; set; }
         public string Password { get; set; }
+        public IList<RoleDto> Roles { get; set; } = new List<RoleDto>();
     }
     public class UserResponseModel : BaseResponse<UserDto>
     {

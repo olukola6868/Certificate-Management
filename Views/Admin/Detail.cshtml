@@ -1,0 +1,44 @@
+﻿@model CertificateManagement.Dtos.AdminResponseModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-sm-11">
+        <table class="table table-hover able-striped table-borderless ">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.FirstName)</th>
+                    <td>@Html.DisplayFor(x => x.Data.FirstName)</td>
+                </tr>
+                 <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.LastName)</th>
+                    <td>@Html.DisplayFor(x => x.Data.LastName)</td>
+                </tr>
+                 <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.Address)</th>
+                    <td>@Html.DisplayFor(x => x.Data.Address)</td>
+                </tr>
+                 <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.EmailAddress)</th>
+                    <td>@Html.DisplayFor(x => x.Data.EmailAddress)</td>
+                </tr>
+                 <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.PhoneNumber)</th>
+                    <td>@Html.DisplayFor(x => x.Data.PhoneNumber)</td>
+                </tr>
+                 <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.Password)</th>
+                    <td>@Html.DisplayFor(x => x.Data.Password)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace CertificateManagement.Repository.Implementations
 {
-    public class CertificateRepository<T> : BaseRepository<Certificate>, ICertificateRepsitory
+    public class CertificateRepository : BaseRepository<Certificate>, ICertificateRepsitory
     {
         public CertificateRepository(ContextClass context)
         {

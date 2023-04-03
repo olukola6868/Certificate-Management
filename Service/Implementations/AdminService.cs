@@ -149,6 +149,7 @@ namespace CertificateManagement.Service.Implementations
             admin.LastName = model.LastName;
             admin.User.Address = model.Address;
             admin.User.PhoneNumber = model.PhoneNumber;
+
             await _adminRepository.Update(admin);
 
             return new BaseResponse<AdminDto>

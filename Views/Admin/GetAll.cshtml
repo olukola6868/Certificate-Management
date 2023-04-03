@@ -1,0 +1,70 @@
+﻿@model CertificateManagement.Dtos.AdminsResponseModels
+
+
+<div>
+    <h1>Admins Forum</h1>
+</div>
+<table class="table" style="    color: Black !important;">
+    <thead>
+        <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                EmailAddress
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                PhoneNumber
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                Delete
+            </th>
+            <th>
+                Update
+            </th>
+        </tr>
+        </tr>
+    </thead>
+
+<tbody>
+    @foreach (var admin in Model.Data)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => admin.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => admin.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => admin.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => admin.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => admin.PhoneNumber)
+            </td>
+            <td>
+                <a asp-action="Detail" asp-route-id="@admin.Id" class="btn btn-success">Details</a>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@admin.Id" class="btn btn-danger">Delete</a>
+            </td>
+
+            <td>
+                <a asp-action="Update" asp-route-id="@admin.Id" class="btn btn-info">Update</a>
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
