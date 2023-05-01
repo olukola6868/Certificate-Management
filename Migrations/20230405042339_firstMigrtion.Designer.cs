@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CertificateManagement.Migrations
 {
     [DbContext(typeof(ContextClass))]
-    [Migration("20230330025517_initialMigrations")]
-    partial class initialMigrations
+    [Migration("20230405042339_firstMigrtion")]
+    partial class firstMigrtion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,11 +28,9 @@ namespace CertificateManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("UserId")
@@ -56,37 +54,30 @@ namespace CertificateManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CertificateCode")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("CertificatePreference")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("OrganizationId")
                         .HasColumnType("int");
 
                     b.Property<string>("QRCodeText")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Signature")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("isDeleted")
@@ -106,34 +97,27 @@ namespace CertificateManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CAC")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsApproved")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("LocalGovernment")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Logo")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("OrganizationDescription")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("OrganizationName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("UserId")
@@ -157,11 +141,9 @@ namespace CertificateManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("isDeleted")
@@ -179,19 +161,15 @@ namespace CertificateManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("EmailAddress")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("isDeleted")
@@ -290,11 +268,9 @@ namespace CertificateManagement.Migrations
 
             modelBuilder.Entity("CertificateManagement.Models.User", b =>
                 {
-                    b.Navigation("Admin")
-                        .IsRequired();
+                    b.Navigation("Admin");
 
-                    b.Navigation("Organization")
-                        .IsRequired();
+                    b.Navigation("Organization");
 
                     b.Navigation("UserRoles");
                 });

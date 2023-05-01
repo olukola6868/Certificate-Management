@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Verify</h1>
+        <p>Please enter your certificate code</p>
+        <form asp-controller="Certificate" asp-action="VerifyCertificate">
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                     <label class="control-label">CertificateCode</label>
+                    <input name="CertificateCode" placeholder="6hde673" class="form-control">
+                </div>
+            </div>
+             <div class="form-group">
+                <input href="#myModal" type="submit" value="Verify" class="btn btn-primary" data-toggle="modal" />
+             </div> 
+        </form>
+</body>
+</html>

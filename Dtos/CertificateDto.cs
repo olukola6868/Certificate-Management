@@ -22,6 +22,7 @@
         public IFormFile Signature { get; set; }
         public string QRCodeText { get; set; }
         public string CertificateCode { get; set; }
+        public int OrganizationId { get; set; }
     }
     public class UpdateCertificateRequestModel
     {

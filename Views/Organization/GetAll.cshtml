@@ -1,0 +1,101 @@
+@model CertificateManagement.Dtos.OrganizationsResponseModels
+
+<div>
+    <h1>Admins Forum</h1>
+</div>
+<table class="table" style="    color: Black !important;">
+    <thead>
+        <tr>
+            <th>
+                OrganizationName
+            </th>
+            <th>
+                Organization Description
+            </th>
+            <th>
+                Local Government
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                City
+            </th>
+             <th>
+                CAC
+            </th>
+             <th>
+                Logo
+            </th>
+            <th>
+                Phone Number
+            </th>
+             <th>
+                Email Address
+            </th>
+             <th>
+                Password
+            </th>
+        </tr>
+        </tr>
+    </thead>
+
+<tbody>
+    @foreach (var organization in Model.Data)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => organization.OrganizationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => organization.OrganizationDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => organization.LocalGovernment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => organization.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => organization.State)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => organization.City)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => organization.CAC)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => organization.Logo)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => organization.PhoneNumber)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => organization.EmailAddress)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => organization.Password)
+            </td>
+            <td>
+                <a asp-action="Detail" asp-route-id="@organization.Id" class="btn btn-success">Details</a>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@organization.Id" class="btn btn-danger">Delete</a>
+            </td>
+
+            <td>
+                <a asp-action="Update" asp-route-id="@organization.Id" class="btn btn-info">Update</a>
+            </td>
+             <td>
+                <a style="color: black;" id="trans" asp-controller="Certificate" asp-action="Create" asp-route-id="@organization.Id" ><strong>Create Certificate</strong></a>
+             </td>
+                
+            
+        </tr>
+    }
+</tbody>
+</table>

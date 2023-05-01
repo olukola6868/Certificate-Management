@@ -20,6 +20,9 @@ builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<ICertificateRepsitory, CertificateRepository>();
 builder.Services.AddScoped<ICertificateService, CertificateService>();
 
+builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+builder.Services.AddScoped<IOrganizationService, OrganizationService>();
+
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 

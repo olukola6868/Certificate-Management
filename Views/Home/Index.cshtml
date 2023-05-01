@@ -2,7 +2,68 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+     <style>
+
+        .my-container {
+            width: 34%;
+            height: 300px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            @* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); *@
+            margin: 100px auto;
+            width: 40pc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #but {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        a {
+            background-color: #e5dbdb;
+            border: none;
+            border-radius: 5px;
+            color: #0c0606;
+            font-size: 16px;
+            margin-top: 10px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            @* background-color: #200e13; *@
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    @{
+    ViewData["Title"] = "Home Page";
+}
+   
+    <div class="my-container">
+        <h2>
+            <marquee behavior="" direction="right"> Welcome</marquee>
+        </h2>
+        <p>Please sign up or log in to continue.</p>
+        <div id="but">
+            <a asp-controller="User" asp-action="Login">Log in</a>
+            <a asp-controller="Organization" asp-action="Create">Sign up</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+@model CertificateManagement.Dtos.UpdateOrganizationRequestModel
+
+<h2>title</h2>
+
+<br>
+<div class="row row-content d-flex justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <h3 class="card-header bg-black text-center"><strong>Update Organization Details</strong></h3>
+            <div class="card-body">
+                <form asp-action="Update" enctype="multipart/form-data">
+                    <p>Check the details carefully before clicking on the Update button</p>
+                    @* <input name="Id" value="@Model.Id" type="hidden" /> *@
+                    <div>
+                        <label asp-for="OrganizationName" class="control-label"></label>
+                        <input asp-for="OrganizationName" class="form-control" required value="@Model.OrganizationName">
+                        <span asp-validation-for="OrganizationName" class="text-danger"></span>
+                    </div>
+                    <div>
+                         <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" required value="@Model.Address">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div>
+                         <label asp-for="OrganizationDescription" class="control-label"></label>
+                        <input asp-for="OrganizationDescription" class="form-control" required value="@Model.OrganizationDescription">
+                        <span asp-validation-for="OrganizationDescription" class="text-danger"></span>
+                    </div>
+                    <div>
+                         <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" required value="@Model.PhoneNumber">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                         <label asp-for="LocalGovernment" class="control-label"></label>
+                        <input asp-for="LocalGovernment" class="form-control" required value="@Model.LocalGovernment">
+                        <span asp-validation-for="LocalGovernment" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="City" class="control-label"></label>
+                        <input asp-for="City" class="form-control" required value="@Model.City">
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="State" class="control-label"></label>
+                        <input asp-for="State" class="form-control" required value="@Model.State">
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label for="Choose fle">CAC</label>
+                        <input type="file" name="CAC" id="formFile" />
+                    </div><br>
+                    <div class="form-group col-sm-6">
+                        <label for="Choose fle">Logo</label>
+                        <input type="file" name="Logo" id="formFile" />
+                    </div><br>
+                    <br />
+                    <button type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

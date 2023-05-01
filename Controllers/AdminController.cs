@@ -23,7 +23,7 @@ namespace CertificateManagement.Controllers
                 var create = await _adminService.Create(model);
                 TempData["success"] = $"{model.FirstName} {model.LastName} created succesfully";
                 TempData.Keep();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("GetAll");
             }
             else
             {
@@ -69,7 +69,7 @@ namespace CertificateManagement.Controllers
                 var update = await _adminService.Update(model, id);
                 TempData["success"] = $"updated succesfully";
                 TempData.Keep();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("GetAll");
             }
             else
             {

@@ -16,6 +16,7 @@ namespace CertificateManagement.Repository.Implementations
         {
             return await _context.Organizations
                 .Include(c => c.Certificates)
+                .Include(c => c.User)
                 .FirstOrDefaultAsync(d => d.Id == id);
         }
 
@@ -30,6 +31,7 @@ namespace CertificateManagement.Repository.Implementations
         public async Task<IList<Organization>> GetAll()
         {
             return await _context.Organizations
+                .Include(c => c.User)
                .Include(c => c.Certificates)
                .ToListAsync();
 

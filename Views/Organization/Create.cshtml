@@ -1,0 +1,95 @@
+@model CertificateManagement.Dtos.CreateOrganizationRequestModel
+
+@if (ViewData != null)
+{
+    <h4>@TempData["Successful"]</h4>
+}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVMS</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Create</h1>
+        <p>Please fll in this form to create an organization</p>
+       
+        <div>
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                         <label asp-for="OrganizationName" class="control-label"></label>
+                        <input asp-for="OrganizationName" placeholder="Code Learners Hub" class="form-control">
+                        <span asp-validation-for="OrganizationName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="OrganizationDescription" class="control-label"></label>
+                        <input asp-for="OrganizationDescription" placeholder="Programming School" class="form-control">
+                        <span asp-validation-for="OrganizationDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="EmailAddress" class="control-label"></label>
+                        <input asp-for="EmailAddress" placeholder="Olukola9@gmail.com" type="email" class="form-control">
+                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                    </div>                    
+                     <div class="form-group col-sm-6">
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                     <div class="form-group col-sm-6">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" type="password" class="form-control">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <p><h4>Other informations to fill</h4></p>
+                     <div class="form-group col-sm-6">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="City" class="control-label"></label>
+                        <input asp-for="City" class="form-control">
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="State" class="control-label"></label>
+                        <input asp-for="State" class="form-control">
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                     <div class="form-group col-sm-6">
+                        <label asp-for="LocalGovernment" class="control-label"></label>
+                        <input asp-for="LocalGovernment" class="form-control">
+                        <span asp-validation-for="LocalGovernment" class="text-danger"></span>
+                    </div><br>
+                    <div class="form-group col-sm-6">
+                        <label for="Choose fle">CAC</label>
+                        <input type="file" name="CAC" id="formFile" />
+                    </div><br>
+                     <div class="form-group col-sm-6">
+                        <label for="Choose fle">Logo</label>
+                        <input type="file" name="Logo" id="formFile" />
+                    </div><br>
+                    <div class="form-group">
+                        <input href="#myModal" type="submit" value="Create" class="btn btn-primary" data-toggle="modal" />
+                    </div>                    
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

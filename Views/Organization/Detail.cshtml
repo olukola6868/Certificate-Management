@@ -1,0 +1,62 @@
+@model CertificateManagement.Dtos.OrganizationResponseModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-sm-11">
+        <table class="table table-hover able-striped table-borderless ">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.OrganizationName)</th>
+                    <td>@Html.DisplayFor(x => x.Data.OrganizationName)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.OrganizationDescription)</th>
+                    <td>@Html.DisplayFor(x => x.Data.OrganizationDescription)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.Address)</th>
+                    <td>@Html.DisplayFor(x => x.Data.Address)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.City)</th>
+                    <td>@Html.DisplayFor(x => x.Data.City)</td>
+                </tr>
+                 <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.LocalGovernment)</th>
+                    <td>@Html.DisplayFor(x => x.Data.LocalGovernment)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.EmailAddress)</th>
+                    <td>@Html.DisplayFor(x => x.Data.EmailAddress)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.Password)</th>
+                    <td>@Html.DisplayFor(x => x.Data.Password)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.PhoneNumber)</th>
+                    <td>@Html.DisplayFor(x => x.Data.PhoneNumber)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.CAC)</th>
+                    <td>@Html.DisplayFor(x => x.Data.CAC)</td>
+                </tr>
+                <img src="@Model.Data.CAC" alt="Italian Trulli">
+
+                 <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.Logo)</th>
+                    <td>@Html.DisplayFor(x => x.Data.Logo)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

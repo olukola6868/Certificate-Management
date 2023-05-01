@@ -1,0 +1,78 @@
+@model CertificateManagement.Dtos.CertificatesResponseModels
+
+<div>
+    <h1>Certificate forum</h1>
+</div>
+<table class="table" style="    color: Black !important;">
+    <thead>
+        <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                Certificate preference
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Comment
+            </th>
+            <th>
+                Certificate Code
+            </th>
+            <th>
+                Signature
+            </th>
+            <th>
+                QrCode Text
+            </th>
+        </tr>
+        </tr>
+    </thead>
+
+<tbody>
+    @foreach (var certificate in Model.Data)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => certificate.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => certificate.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => certificate.CertificatePreference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => certificate.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => certificate.Comment)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => certificate.CertificateCode)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => certificate.Signature)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => certificate.QRCodeText)
+            </td>
+            <td>
+                <a asp-action="Detail" asp-route-id="@certificate.Id" class="btn btn-success">Details</a>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@certificate.Id" class="btn btn-danger">Delete</a>
+            </td>
+
+            <td>
+                <a asp-action="Update" asp-route-id="@certificate.Id" class="btn btn-info">Update</a>
+            </td>
+        </tr>
+    }
+</tbody>
+</table>

@@ -6,6 +6,7 @@ namespace CertificateManagement.Repository.Interface
     public interface ICertificateRepsitory : IBaseRepository<Certificate>
     {
         Task<Certificate> Get(int id);
+        Task<Certificate> GetByCode(string CertificateCode);
         Task<Certificate> Get(Expression<Func<Certificate, bool>> expression);
         Task<IList<Certificate>> GetAll();
     }

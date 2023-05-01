@@ -17,14 +17,8 @@ namespace CertificateManagement.Service.Implementations
 
         public async Task<BaseResponse<CertificateDto>> Create(CreateCertificateRequestModel model)
         {
-           var number = Guid.NewGuid().ToString().Remove(7);
-            // var certificateExists = _certificateRepository.Get(a => a.CertificateCode == model.CertificateCode);
-            // if(certificateExists != null) return new BaseResponse<CertificateDto>
-            // {
-            //     Message = "Certificate already exits",
-            //     Status = false,
-            //     Data = null
-            // };
+            var number = Guid.NewGuid().ToString().Remove(7);
+
             var certificate = new Certificate
             {
                 CertificateCode = number,
@@ -32,35 +26,38 @@ namespace CertificateManagement.Service.Implementations
                 LastName = model.LastName,
                 CertificatePreference = model.CertificatePreference,
                 Comment = model.Comment,
-                QRCodeText = model.QRCodeText
+                QRCodeText = model.QRCodeText,
+                OrganizationId = model.OrganizationId,
+                            
             };
+
             await _certificateRepository.Create(certificate);
 
-            var folderPath = Path.Combine(Directory.GetCurrentDirectory() + "\\Signatures\\");
-            if (!System.IO.Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
+             string SignatureImage = null;
+
             if (model.Signature != null)
             {
-                var fileName = Path.GetFileNameWithoutExtension(model.Signature.FileName);
-                var filePath = Path.Combine(folderPath, model.Signature.FileName);
-                var extension = Path.GetExtension(model.Signature.FileName);
-                if (!System.IO.Directory.Exists(filePath))
+                var uploadsFolder = Path.Combine(_webHost.WebRootPath, "Signature");
+                if (!Directory.Exists(uploadsFolder))
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await model.Signature.CopyToAsync(stream);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
 
-                    }
-                    certificate.Signature = fileName;
+                var fileName = Guid.NewGuid().ToString() + Path.GetFileName(model.Signature.FileName);
+                SignatureImage = "/Signature/" + fileName;
+                var filePath = Path.Combine(uploadsFolder, fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await model.Signature.CopyToAsync(stream);
                 }
             }
+            certificate.Signature = SignatureImage;
+
             await _certificateRepository.Update(certificate);
             return new BaseResponse<CertificateDto>
             {
                 Message = "Certificate created successfully",
-                Status = true,                
+                Status = true,
             };
         }
 
@@ -78,7 +75,7 @@ namespace CertificateManagement.Service.Implementations
         public async Task<CertificateResponseModel> Get(int id)
         {
             var certificate = await _certificateRepository.Get(id);
-            if(certificate == null)
+            if (certificate == null)
             {
                 return new CertificateResponseModel
                 {
@@ -106,9 +103,9 @@ namespace CertificateManagement.Service.Implementations
         }
 
         public async Task<CertificatesResponseModels> GetAll()
-        {          
+        {
             var certificates = await _certificateRepository.GetAll();
-            if(certificates == null)
+            if (certificates == null)
             {
                 return new CertificatesResponseModels
                 {
@@ -137,7 +134,37 @@ namespace CertificateManagement.Service.Implementations
             };
         }
 
-        public async Task<BaseResponse<CertificateDto>> Update(UpdateCertificateRequestModel model , int id)
+        public async Task<CertificateResponseModel> GetByCode(string CertificateCode)
+        {
+            var certificate = await _certificateRepository.GetByCode(CertificateCode);
+            if (certificate == null)
+            {
+                return new CertificateResponseModel
+                {
+                    Message = "Certificate not found",
+                    Status = false,
+                    Data = null
+                };
+            }
+            return new CertificateResponseModel
+            {
+                Message = "Successfully",
+                Status = true,
+                Data = new CertificateDto
+                {
+                    FirstName = certificate.FirstName,
+                    LastName = certificate.LastName,
+                    CertificateCode = certificate.CertificateCode,
+                    CertificatePreference = certificate.CertificatePreference,
+                    Comment = certificate.Comment,
+                    Date = certificate.Date,
+                    Signature = certificate.Signature,
+                    QRCodeText = certificate.QRCodeText
+                }
+            };
+        }
+
+        public async Task<BaseResponse<CertificateDto>> Update(UpdateCertificateRequestModel model, int id)
         {
             var certificate = await _certificateRepository.Get(a => a.Id == id);
             if (certificate == null) return new BaseResponse<CertificateDto>
@@ -146,29 +173,32 @@ namespace CertificateManagement.Service.Implementations
                 Status = false,
                 Data = null
             };
-            var folderPath = Path.Combine(Directory.GetCurrentDirectory() + "\\Signatures\\");
-            if (!System.IO.Directory.Exists(folderPath))
+           string SignatureImage = null;
+
+            if (model.Signature != null)
             {
-                Directory.CreateDirectory(folderPath);
-            }
-            var fileName = Path.GetFileNameWithoutExtension(model.Signature.FileName);
-            var filePath = Path.Combine(folderPath, model.Signature.FileName);
-            var extension = Path.GetExtension(model.Signature.FileName);
-            if (!System.IO.Directory.Exists(filePath))
-            {
+                var uploadsFolder = Path.Combine(_webHost.WebRootPath, "Signature");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                var fileName = Guid.NewGuid().ToString() + Path.GetFileName(model.Signature.FileName);
+                SignatureImage = "/Signature/" + fileName;
+                var filePath = Path.Combine(uploadsFolder, fileName);
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await model.Signature.CopyToAsync(stream);
                 }
-                certificate.Signature = fileName;
             }
 
             certificate.FirstName = model.FirstName;
             certificate.LastName = model.LastName;
             certificate.Comment = model.Comment;
             certificate.Date = model.Date;
+            certificate.Signature = SignatureImage;
             certificate.CertificatePreference = model.CertificatePreference;
-            
+
             await _certificateRepository.Update(certificate);
 
             return new BaseResponse<CertificateDto>

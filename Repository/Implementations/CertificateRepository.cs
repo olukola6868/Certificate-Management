@@ -32,6 +32,12 @@ namespace CertificateManagement.Repository.Implementations
                 .Include(c => c.Organization)
                 .ToListAsync();
         }
-       
+
+        public async Task<Certificate> GetByCode(string CertificateCode)
+        {
+             return await _context.Certificates
+               .Include(c => c.Organization)
+               .FirstOrDefaultAsync(d => d.CertificateCode == CertificateCode);
+        }
     }
 }

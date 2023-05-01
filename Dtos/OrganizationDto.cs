@@ -3,6 +3,7 @@
     public class OrganizationDto
     {
         public int Id { get; set; }
+        public int UserId{get;set;}
         public string OrganizationName { get; set; }
         public bool IsApproved { get; set; }
         public string CAC { get; set; }

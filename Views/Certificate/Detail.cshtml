@@ -1,0 +1,52 @@
+@model CertificateManagement.Dtos.CertificateResponseModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-sm-11">
+        <table class="table table-hover able-striped table-borderless ">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.FirstName)</th>
+                    <td>@Html.DisplayFor(x => x.Data.FirstName)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.LastName)</th>
+                    <td>@Html.DisplayFor(x => x.Data.LastName)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.CertificatePreference)</th>
+                    <td>@Html.DisplayFor(x => x.Data.CertificatePreference)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.CertificateCode)</th>
+                    <td>@Html.DisplayFor(x => x.Data.CertificateCode)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.Comment)</th>
+                    <td>@Html.DisplayFor(x => x.Data.Comment)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.CertificateCode)</th>
+                    <td>@Html.DisplayFor(x => x.Data.CertificateCode)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.QRCodeText)</th>
+                    <td>@Html.DisplayFor(x => x.Data.QRCodeText)</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayNameFor(x => x.Data.Signature)</th>
+                    <td>@Html.DisplayFor(x => x.Data.Signature)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
